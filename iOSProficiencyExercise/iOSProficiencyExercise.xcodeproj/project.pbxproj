@@ -89,6 +89,32 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		563C018120D66FAE00618F67 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				56519BE620D4F82300DC07F3 /* Main.storyboard */,
+				56519BEB20D4F82300DC07F3 /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		563C018220D66FC700618F67 /* Image Assets */ = {
+			isa = PBXGroup;
+			children = (
+				56519BE920D4F82300DC07F3 /* Assets.xcassets */,
+			);
+			path = "Image Assets";
+			sourceTree = "<group>";
+		};
+		563C018320D66FDC00618F67 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				56519BE220D4F82300DC07F3 /* AppDelegate.swift */,
+				56519BE420D4F82300DC07F3 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		56519BD620D4F82300DC07F3 = {
 			isa = PBXGroup;
 			children = (
@@ -109,14 +135,12 @@
 		56519BE120D4F82300DC07F3 /* iOSProficiencyExercise */ = {
 			isa = PBXGroup;
 			children = (
-				56519BE220D4F82300DC07F3 /* AppDelegate.swift */,
-				56519BE420D4F82300DC07F3 /* ViewController.swift */,
-				56519BE620D4F82300DC07F3 /* Main.storyboard */,
-				56519BE920D4F82300DC07F3 /* Assets.xcassets */,
-				56519BEB20D4F82300DC07F3 /* LaunchScreen.storyboard */,
-				56519BEE20D4F82300DC07F3 /* Info.plist */,
 				563C015620D62C2300618F67 /* Models */,
+				563C018120D66FAE00618F67 /* Views */,
+				563C018320D66FDC00618F67 /* Controllers */,
+				563C018220D66FC700618F67 /* Image Assets */,
 				563C015120D6240900618F67 /* Utils */,
+				56519BEE20D4F82300DC07F3 /* Info.plist */,
 			);
 			path = iOSProficiencyExercise;
 			sourceTree = "<group>";

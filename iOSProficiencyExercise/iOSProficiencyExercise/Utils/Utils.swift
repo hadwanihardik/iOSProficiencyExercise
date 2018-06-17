@@ -8,31 +8,34 @@
 
 import UIKit
 class Utils: NSObject {
-    enum UIUserInterfaceIdiom : Int {
+
+    // Device familu enum
+    enum deviceFamily : Int {
         case unspecified
-        case iPhone // iPhone and iPod touch style UI
-        case iPad // iPad style UI
+        case iPhone
+        case iPad
     }
-    static func deviceType() ->(UIUserInterfaceIdiom)
+    //Check and return device type
+    static func deviceType() ->(deviceFamily)
     {
         switch UIDevice.current.userInterfaceIdiom {
         case .phone:
-            // It's an iPhone
             return .iPhone
         case .pad:
             return .iPad
-        // It's an iPad
         default: break
-            // Uh, oh! What could it be?
         }
-        return .iPhone
+        return .unspecified
     }
+    //Common method to show alert
     static func showAlert(title : String,Message message: String,buttonText text:String,viewController view:UIViewController )
     {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: text, style: UIAlertActionStyle.default, handler: nil))
         view.present(alert, animated: true, completion: nil)
     }
+
+    // Function to resize image based on passed parameters and ratio of image
     static func resizeImage(with image: UIImage?, scaledTo newSize: CGSize) -> UIImage? {
         var newSize = newSize
         let size: CGSize? = image?.size

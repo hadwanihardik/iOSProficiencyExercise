@@ -7,4 +7,7 @@
 //
 
 
+
+// We will have all constants here.
  let urlForJson = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json" 
+ let messageGetData = "\"Pull To Refresh\"  Or Tap On Refresh icon to load data from server."
