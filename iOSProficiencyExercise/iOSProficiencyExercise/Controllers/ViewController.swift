@@ -54,7 +54,7 @@ extension ViewController {
     {
         //Start network indicator which will indicate user that network service is running
         UIApplication.shared.isNetworkActivityIndicatorVisible =  true
-        ApiClient.GetAPI(url: urlForJson) { (success, dictData) in
+        ApiClient.callingWebserviceUsingNSUrlConnection(url: urlForJson) { (success, dictData) in
             //Start main thread to update UI
             DispatchQueue.main.async
                 {
