@@ -33,5 +33,26 @@ class Utils: NSObject {
         alert.addAction(UIAlertAction(title: text, style: UIAlertActionStyle.default, handler: nil))
         view.present(alert, animated: true, completion: nil)
     }
-    
+    static func resizeImage(with image: UIImage?, scaledTo newSize: CGSize) -> UIImage? {
+        var newSize = newSize
+        let size: CGSize? = image?.size
+        let widthRatio: CGFloat = newSize.width / (image?.size.width ?? 0.0)
+        let heightRatio: CGFloat = newSize.height / (image?.size.height ?? 0.0)
+
+        // Figure out what our orientation is, and use that to form the rectangle
+        if widthRatio > heightRatio {
+            newSize = CGSize(width: (size?.width ?? 0.0) * heightRatio, height: (size?.height ?? 0.0) * heightRatio)
+        } else {
+            newSize = CGSize(width: (size?.width ?? 0.0) * widthRatio, height: (size?.height ?? 0.0) * widthRatio)
+        }
+        // This is the rect that we've calculated out and this is what is actually used below
+        let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
+        // Actually do the resizing to the rect using the ImageContext stuff
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
+        image?.draw(in: rect)
+        let newImage: UIImage? = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage
+    }
+
 }

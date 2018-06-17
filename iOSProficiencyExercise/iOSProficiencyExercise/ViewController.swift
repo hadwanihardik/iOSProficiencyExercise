@@ -7,19 +7,20 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ViewController: UIViewController,UITableViewDataSource {
     @IBOutlet weak var mainTableView: UITableView!
     var pullToRefresh: UIRefreshControl!
     var arrayData = [FactDataModel]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Adding Right bar button for Refresh data
         self.navigationItem.rightBarButtonItem =  UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.refresh, target:self, action:#selector(refreshData))
         // Setting Table View Estimated Row Height
         self.mainTableView.rowHeight = UITableViewAutomaticDimension
-        self.mainTableView.estimatedRowHeight = (Utils.deviceType() == .iPhone) ? 65.0 : 110.0
+        self.mainTableView.estimatedRowHeight = (Utils.deviceType() == .iPhone) ? 65.0 : 120.0
 
         // Adding Tableview's pull to refresh control
         pullToRefresh = UIRefreshControl()
@@ -70,6 +71,7 @@ extension ViewController {
             }
         }
     }
+
 }
 
 // MARK: - For API Call
@@ -81,20 +83,39 @@ extension ViewController
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (self.arrayData.count == 0) ? 1 : self.arrayData.count
     }
+    public func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        let range = Range(uncheckedBounds: (lower: 0, upper: self.mainTableView.numberOfSections))
+        self.mainTableView.reloadSections(IndexSet(integersIn: range), with: .none)
+        // use as? or as! to cast UITableViewCell to your desired type
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let identifier =  "DataCell"
+        let identifier =  "FactDataCell"
         var cell =  tableView.dequeueReusableCell(withIdentifier: identifier)
         if cell == nil{
             cell = UITableViewCell.init(style: UITableViewCellStyle.subtitle, reuseIdentifier: identifier)
         }
-        if(self.arrayData.count > 0){
-            let fact =  arrayData[indexPath.row]
-            cell?.textLabel?.text = fact.title
-            cell?.detailTextLabel?.text = fact.details
+        if(self.arrayData.count == 0){
+                cell?.detailTextLabel?.text = "\"Pull to Refresh\"  Or Tap On Refresh icon to load data from server."
         }else{
-            cell?.detailTextLabel?.text = "\"Pull to Refresh\"  Or Tap On Refresh icon to load data from server."
+            let fact =  arrayData[indexPath.row]
+            cell?.textLabel?.text = fact.title.trimmingCharacters(in: .whitespacesAndNewlines)
+            cell?.detailTextLabel?.text = fact.details.trimmingCharacters(in: .whitespacesAndNewlines)
+            cell?.imageView?.image = nil
+            if(fact.imageUrl.trimmingCharacters(in: .whitespacesAndNewlines) != ""){
+                let imageUrl = URL(string:fact.imageUrl.trimmingCharacters(in: .whitespacesAndNewlines))
+                cell?.imageView?.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: ""),options: SDWebImageOptions(rawValue: 0), completed: { (image, error, cacheType, imageURL) in
+                    if image != nil {
+                        cell?.imageView?.image = Utils.resizeImage(with: image, scaledTo: (Utils.deviceType() == .iPhone) ? CGSize(width: 45.0, height: 45.0) : CGSize(width: 100.0, height: 100.0))
+                    }
+                    cell?.layoutIfNeeded()
+                    cell?.layoutSubviews()
+                    cell?.setNeedsLayout()
+                })
+            }
         }
         return cell!;
     }
+
 }
