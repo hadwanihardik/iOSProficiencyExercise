@@ -40,7 +40,7 @@
 		563C015720D62C3D00618F67 /* FactDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactDataModel.swift; sourceTree = "<group>"; };
 		563C015920D62E4400618F67 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		563C015B20D62E6100618F67 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		56519BDF20D4F82300DC07F3 /* iOSProficiencyExercise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSProficiencyExercise.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		56519BDF20D4F82300DC07F3 /* FactApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FactApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56519BE220D4F82300DC07F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56519BE420D4F82300DC07F3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		56519BE720D4F82300DC07F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -127,7 +127,7 @@
 		56519BE020D4F82300DC07F3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				56519BDF20D4F82300DC07F3 /* iOSProficiencyExercise.app */,
+				56519BDF20D4F82300DC07F3 /* FactApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -148,9 +148,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		56519BDE20D4F82300DC07F3 /* iOSProficiencyExercise */ = {
+		56519BDE20D4F82300DC07F3 /* FactApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 56519BF120D4F82300DC07F3 /* Build configuration list for PBXNativeTarget "iOSProficiencyExercise" */;
+			buildConfigurationList = 56519BF120D4F82300DC07F3 /* Build configuration list for PBXNativeTarget "FactApp" */;
 			buildPhases = (
 				56519BDB20D4F82300DC07F3 /* Sources */,
 				56519BDC20D4F82300DC07F3 /* Frameworks */,
@@ -162,9 +162,9 @@
 			);
 			dependencies = (
 			);
-			name = iOSProficiencyExercise;
+			name = FactApp;
 			productName = iOSProficiencyExercise;
-			productReference = 56519BDF20D4F82300DC07F3 /* iOSProficiencyExercise.app */;
+			productReference = 56519BDF20D4F82300DC07F3 /* FactApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -196,7 +196,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				56519BDE20D4F82300DC07F3 /* iOSProficiencyExercise */,
+				56519BDE20D4F82300DC07F3 /* FactApp */,
 			);
 		};
 /* End PBXProject section */
@@ -431,7 +431,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		56519BF120D4F82300DC07F3 /* Build configuration list for PBXNativeTarget "iOSProficiencyExercise" */ = {
+		56519BF120D4F82300DC07F3 /* Build configuration list for PBXNativeTarget "FactApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				56519BF220D4F82300DC07F3 /* Debug */,
